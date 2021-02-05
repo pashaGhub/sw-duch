@@ -1,0 +1,23 @@
+@import "../../../assets/mixins.scss";
+@import "../../../assets/variables.scss";
+
+.container {
+  @include defaultContainer;
+  @include boxBorder;
+
+  .sectionTitle {
+    @include title($font-size: 1.8rem);
+    padding-bottom: 3rem;
+  }
+
+  .text {
+    margin-bottom: 3rem;
+    p {
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin: unset;
+      }
+    }
+  }
+}

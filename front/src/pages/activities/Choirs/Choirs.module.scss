@@ -1,0 +1,27 @@
+@import "../../../assets/mixins.scss";
+@import "../../../assets/variables.scss";
+
+.container {
+  @include defaultContainer;
+  @include boxBorder;
+
+  .sectionTitle {
+    @include title($font-size: 1.8rem);
+    padding-bottom: 2rem;
+  }
+
+  .singleChoir {
+    margin-bottom: 2.5rem;
+
+    h3 {
+      @include subtitle();
+    }
+
+    .infoSection {
+      margin-bottom: 0.2rem;
+      span {
+        font-weight: 600;
+      }
+    }
+  }
+}

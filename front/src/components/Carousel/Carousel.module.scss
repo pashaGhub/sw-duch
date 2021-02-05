@@ -1,0 +1,92 @@
+@import "../../assets/variables.scss";
+@import "../../assets/mixins.scss";
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 20rem;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow: hidden;
+
+  @include responsiveInterval(600px, 899px) {
+    height: 25rem;
+  }
+
+  @include minResponsive(900px) {
+    height: 35rem;
+  }
+
+  .slide {
+    position: relative;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: 0.5s;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding-bottom: 1rem;
+      font-weight: bold;
+      font-size: 1.3rem;
+      font-style: oblique;
+      color: rgb(0, 0, 79);
+    }
+  }
+
+  %btn-styles {
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    @include minResponsive(900px) {
+      width: 10%;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.411);
+      color: whitesmoke;
+    }
+  }
+
+  .leftBtn {
+    left: 0;
+    @extend %btn-styles;
+  }
+
+  .rightBtn {
+    right: 0;
+    @extend %btn-styles;
+  }
+
+  .smallWidthBtn {
+    width: 20%;
+  }
+}
+
+.smallWidth {
+  height: 20rem;
+  @include minResponsive(600px) {
+    width: 20rem;
+  }
+
+  @include responsiveInterval(600px, 899px) {
+    margin: auto;
+  }
+}

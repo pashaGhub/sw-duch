@@ -1,0 +1,36 @@
+@import "../../assets/variables.scss";
+@import "../../assets/mixins.scss";
+
+.footer {
+  height: auto;
+  background: $dark-color;
+  color: $light-color;
+  min-height: $footer-min-height;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -3px 3px rgba(0, 0, 0, 0.15);
+
+  .container {
+    max-width: $max-width;
+    height: 100%;
+    margin: 2rem $mob-side-margin;
+    text-align: center;
+
+    @include minResponsive(600px) {
+      display: flex;
+      justify-content: space-between;
+      text-align: unset;
+    }
+
+    @include minResponsive(1024px) {
+      margin: 2rem auto;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+  }
+}

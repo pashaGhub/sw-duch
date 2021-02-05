@@ -1,0 +1,55 @@
+@import "../../assets/mixins.scss";
+@import "../../assets/variables.scss";
+
+.container {
+  position: relative;
+
+  @include defaultContainer;
+  @include boxBorder;
+
+  img {
+    position: relative;
+    width: 100%;
+    height: 6rem;
+    object-fit: cover;
+    // opacity: 0.8;
+  }
+
+  .title {
+    @include title($font-size: 2.5rem);
+    padding: 1rem 0 3rem;
+  }
+
+  .info {
+    p {
+      padding-bottom: 2rem;
+
+      &:last-child {
+        padding-bottom: unset;
+      }
+
+      a {
+        color: rgb(45, 45, 177);
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover {
+          color: rgb(45, 45, 100);
+        }
+      }
+    }
+  }
+
+  .video {
+    margin-top: 3rem;
+    position: relative;
+    padding-bottom: 56.25%;
+
+    iframe {
+      border: unset;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

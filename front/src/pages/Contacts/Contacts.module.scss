@@ -1,0 +1,23 @@
+@import "../../assets/variables.scss";
+@import "../../assets/mixins.scss";
+
+.container {
+  @include defaultContainer;
+  @include boxBorder;
+  .info {
+    margin-bottom: 3rem;
+    @include minResponsive(900px) {
+      display: flex;
+      justify-content: space-between;
+      margin: 2rem auto 5rem;
+    }
+  }
+
+  .map {
+    background: $light-color;
+  }
+}
+
+.contactsDecoration {
+  top: 40%;
+}

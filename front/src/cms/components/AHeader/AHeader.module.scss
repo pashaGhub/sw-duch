@@ -1,0 +1,31 @@
+@import "../../../assets/variables.scss";
+@import "../../../assets/mixins.scss";
+
+.header {
+  background: $dark-color;
+  color: $light-color;
+  width: 100%;
+  height: $header-height;
+  font-weight: 200;
+  position: fixed;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  max-width: $cms-max-width;
+  height: 100%;
+  margin: auto;
+
+  .logo {
+    line-height: $header-height;
+    font-size: 1.8rem;
+    margin: 0 $mob-side-margin;
+    @include minResponsive(1024px) {
+      margin-left: 0;
+    }
+  }
+}

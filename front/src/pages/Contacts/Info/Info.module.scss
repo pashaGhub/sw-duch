@@ -1,0 +1,36 @@
+@import "../../../assets/mixins.scss";
+@import "../../../assets/variables.scss";
+
+.info {
+  margin-bottom: 3rem;
+  @include responsiveInterval(600px, 899px) {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  @include minResponsive(900px) {
+    margin-bottom: unset;
+  }
+
+  .infoSection {
+    &:first-of-type {
+      margin-bottom: 2rem;
+      @include responsiveInterval(600px, 899px) {
+        margin-bottom: unset;
+      }
+    }
+    h3 {
+      @include subtitle($bottom: 0.5rem);
+    }
+
+    p {
+      line-height: 1.5rem;
+
+      span,
+      a {
+        font-weight: 600;
+      }
+    }
+  }
+}

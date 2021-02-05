@@ -1,0 +1,15 @@
+@import "./assets/variables.scss";
+@import "./assets/mixins.scss";
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  // background: $default-background;
+  padding-top: $header-height + $main-top-margin;
+  padding-bottom: $footer-min-height + 8rem;
+
+  @include minResponsive(1024px) {
+    padding-top: $header-height + $main-top-margin;
+    padding-bottom: $footer-min-height + 10rem;
+  }
+}

@@ -1,0 +1,79 @@
+@import "../../../assets/variables.scss";
+@import "../../../assets/mixins.scss";
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: none;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
+}
+
+.container {
+  box-sizing: border-box;
+  max-width: 30rem;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 0 3rem;
+  margin-top: 10%;
+
+  @include minResponsive(1024px) {
+    margin-top: 5%;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .form {
+    width: 100%;
+    .formItem {
+      @include defaultInput() {
+        margin: 2rem auto 1.5rem;
+      }
+    }
+
+    .button {
+      display: inline-block;
+      width: 100%;
+      height: 4rem;
+      line-height: 4rem;
+      background: #979797;
+      color: #fff;
+      border: 0;
+      border-radius: 100px;
+      text-decoration: none;
+      margin-top: 2rem;
+      text-align: center;
+      transition: 0.3s;
+      &:hover {
+        filter: brightness(85%);
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 1px #333;
+      }
+
+      &:disabled {
+        filter: brightness(85%);
+        cursor: not-allowed;
+      }
+    }
+
+    .link {
+      @include customLink() {
+        display: flex;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin: auto;
+        padding-top: 2rem;
+      }
+    }
+  }
+}

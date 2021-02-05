@@ -1,0 +1,111 @@
+@import "../../assets/variables.scss";
+@import "../../assets/mixins.scss";
+
+.header {
+  background: $header-color;
+  background: $header-gradient;
+  color: $light-color;
+  width: 100%;
+  height: $header-height;
+  position: fixed;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  max-width: $max-width;
+  height: 100%;
+  margin: auto;
+
+  .logo {
+    line-height: $header-height;
+    font-size: 1.8rem;
+    margin: 0 $mob-side-margin;
+    @include minResponsive(1024px) {
+      margin-left: 0;
+    }
+    a {
+      &:visited {
+        color: unset;
+      }
+      @include customLink();
+    }
+  }
+
+  .navBar {
+    display: none;
+    @include minResponsive(769px) {
+      display: flex;
+    }
+    justify-content: flex-end;
+
+    ul {
+      list-style: none;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+
+      li {
+        position: relative;
+        display: inline-block;
+        padding: 0 1rem;
+        line-height: $header-height;
+        color: unset;
+        a {
+          color: unset;
+        }
+
+        .navItem {
+          text-transform: uppercase;
+          transition: all 0.3s ease;
+        }
+
+        .dropdown {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          min-width: 12rem;
+          visibility: hidden;
+          background: $dark-color;
+          background: $header-gradient;
+          color: $light-color;
+          margin-left: -33%;
+          padding: 0.5rem 0.2rem;
+
+          a {
+            padding: 0 1rem;
+            &:hover {
+              background: $light-color;
+              color: $dark-color;
+            }
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            margin-left: -10px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent transparent $dark-red-color transparent;
+          }
+        }
+
+        &:hover {
+          .navItem {
+            opacity: 0.6;
+          }
+          .dropdown {
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+}

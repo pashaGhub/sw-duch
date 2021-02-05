@@ -1,0 +1,33 @@
+@import "../../../assets/variables.scss";
+@import "../../../assets/mixins.scss";
+
+.container {
+  @include panelContainer() {
+  }
+
+  .panel {
+    width: 100%;
+    transition: all 0.3s ease;
+    padding: 0 1rem;
+    box-shadow: $panel-box-shadow;
+
+    @include minResponsive(1024px) {
+      margin-left: 1rem;
+    }
+
+    .currentNews {
+      h1 {
+        @include customTitle;
+      }
+
+      .news {
+        margin: 1rem 0;
+
+        &Title {
+          display: flex;
+          gap: 1rem;
+        }
+      }
+    }
+  }
+}

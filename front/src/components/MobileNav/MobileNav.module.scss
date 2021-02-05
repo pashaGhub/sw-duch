@@ -1,0 +1,72 @@
+@import "../../assets/variables.scss";
+@import "../../assets/mixins.scss";
+
+.mobileNav {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+  background: $light-color;
+  margin-top: $header-height;
+  top: 0;
+  z-index: 200;
+
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem $mob-side-margin;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: unset;
+
+      li {
+        text-decoration: none;
+        color: black;
+        font-size: 1.1rem;
+        line-height: 2rem;
+        font-weight: 600;
+        padding-left: 0.5rem;
+        transition: all 0.3s ease;
+
+        a {
+          color: unset;
+        }
+        .pointer {
+          cursor: pointer;
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+
+        .dropdown {
+          display: flex;
+          flex-direction: column;
+          padding-left: 2rem;
+          font-weight: 400;
+
+          a {
+            padding-left: 1rem;
+
+            &:hover {
+              background: $header-color;
+              color: $light-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include minResponsive(769px) {
+    display: none;
+  }
+}
+
+.open {
+  transform: translateX(0);
+}

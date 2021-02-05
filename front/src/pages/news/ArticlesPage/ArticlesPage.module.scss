@@ -1,0 +1,12 @@
+@import "../../../assets/mixins.scss";
+@import "../../../assets/variables.scss";
+
+.container {
+  @include defaultContainer;
+  @include boxBorder;
+
+  .title {
+    @include title($font-size: 2.5rem);
+    padding: 1rem 0 3rem;
+  }
+}

@@ -1,0 +1,59 @@
+@import "../../../assets/variables.scss";
+@import "../../../assets/mixins.scss";
+
+.container {
+  .searchContainer {
+    display: flex;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid $ash-color;
+
+    .searchInput {
+      width: 100%;
+      margin-right: 1rem;
+    }
+    .select {
+      width: 7rem;
+      margin: auto;
+    }
+  }
+
+  .loading {
+    text-align: center;
+  }
+  .results {
+    margin-top: 1rem;
+
+    .singleResult {
+      display: flex;
+      justify-content: space-between;
+      background: $default-background;
+      border-radius: 2px;
+      border: 1px solid #f1f1f1;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      font-size: 1.1rem;
+      padding: 0 1rem;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+
+      span:first-of-type {
+        font-weight: 500;
+      }
+
+      span:last-of-type {
+        color: $primary-color;
+        margin-right: 1rem;
+      }
+
+      &:hover {
+        background: rgb(234, 240, 252);
+      }
+    }
+
+    h2 {
+      @include customTitle;
+      text-align: center;
+    }
+  }
+}

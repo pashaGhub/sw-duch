@@ -1,0 +1,58 @@
+@import "../../../assets/variables.scss";
+@import "../../../assets/mixins.scss";
+
+.container {
+  width: 12rem;
+  min-width: 12rem;
+
+  .positionSticky {
+    position: sticky;
+    top: $header-height + 1rem;
+  }
+
+  a {
+    color: unset;
+  }
+
+  .section {
+    font-size: 1.1rem;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title {
+    font-weight: 600;
+    transition: all 0.5s ease;
+    display: inline-block;
+    position: relative;
+
+    &::before {
+      content: "\00bb";
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      left: -20px;
+      color: black;
+      transition: all 0.5s;
+    }
+    &:hover {
+      padding-left: 1rem;
+
+      &::before {
+        opacity: 1;
+        left: 0;
+      }
+    }
+  }
+
+  .titleActive {
+    padding-left: 1rem;
+
+    &::before {
+      opacity: 1;
+      left: 0;
+    }
+  }
+}
