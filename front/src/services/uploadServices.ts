@@ -24,11 +24,7 @@ export const uploadImgs = async (options: any) => {
 
 export const getUploadImgs = async (token: string) => {
   try {
-    const response = await axios.get(`/api/uploads/img`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await axios.get(`/api/uploads/img`);
     return response.data;
   } catch (e) {
     return { message: e };

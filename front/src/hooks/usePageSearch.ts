@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const usePageSearch = (
-  token: string,
   type: "ad" | "article" | "all" = "all",
   page: number = 1,
   query: string = "",
@@ -15,7 +14,6 @@ export const usePageSearch = (
 
   const headers = {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
   };
 
   useEffect(() => {

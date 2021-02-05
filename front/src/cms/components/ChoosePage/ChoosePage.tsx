@@ -40,7 +40,6 @@ export const ChoosePage: React.FC<IChoosePage> = ({
   const [pageNum, setPageNum] = useState<number>(1);
   const [type, setType] = useState<"ad" | "article" | "all">("all");
   const { loading, error, pages, hasMore } = usePageSearch(
-    token,
     type,
     pageNum,
     query,

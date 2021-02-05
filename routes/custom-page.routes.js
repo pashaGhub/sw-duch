@@ -20,7 +20,7 @@ router.post("/", auth, async (req, res) => {
 });
 
 // /api/custom-page
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const type = req.query.type;
     const page = parseInt(req.query.page);

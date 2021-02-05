@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { AppContext, ICustomPage } from "../../context/AppContext";
+import { usePageSearch } from "../../hooks";
 
 import { Decoration } from "../../components/Decoration/Decoration";
 import { Sidebar } from "./Sidebar/Sidebar";
@@ -11,7 +12,15 @@ import s from "./Home.module.scss";
 
 export const Home: React.FC = () => {
   const { adsArr, articlesArr, handleLocation } = useContext(AppContext);
+  const { loading, error, pages, hasMore } = usePageSearch(
+    "article",
+    1,
+    "",
+    false
+  );
   const location = useLocation();
+
+  console.log(pages);
 
   useEffect(() => {
     handleLocation(location);
@@ -37,11 +46,14 @@ export const Home: React.FC = () => {
         <div className={s.articleBar}>
           <div className={s.articleBarContainer}>
             <h1 className={s.sectionTitle}>Artykuły</h1>
-            <List
-              arr={articlesArr.filter(
-                (item: ICustomPage, ind: number) => ind < 4
-              )}
-            />
+            {loading && <div>loading</div>}
+            {!loading && (
+              <List
+                arr={articlesArr.filter(
+                  (item: ICustomPage, ind: number) => ind < 4
+                )}
+              />
+            )}
           </div>
         </div>
       </div>

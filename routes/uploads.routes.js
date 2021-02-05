@@ -58,7 +58,7 @@ router.post("/img", auth, uploadImg.single("file"), async (req, res, next) => {
 });
 
 // /api/uploads/img - get images
-router.get("/img", auth, async (req, res) => {
+router.get("/img", async (req, res) => {
   try {
     const getImg = await Uploads.find();
 
