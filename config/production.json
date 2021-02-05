@@ -2,5 +2,5 @@
   "port": 80,
   "jwtSecret": "fF<hVS4'jV,f,#z;",
   "mongoUri": "mongodb+srv://admin:9swduch123@cluster0.608fd.mongodb.net/swduch?retryWrites=true&w=majority",
-  "baseUrl": "http://localhost:8080"
+  "baseUrl": "http://localhost:5000"
 }
