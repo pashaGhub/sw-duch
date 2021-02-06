@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/static/css/main.aa9f87e0.chunk.css",
+    "main.js": "/static/js/main.1e9f8cef.chunk.js",
+    "main.js.map": "/static/js/main.1e9f8cef.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4ac598e5.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4ac598e5.js.map",
+    "static/css/2.f7bdbb25.chunk.css": "/static/css/2.f7bdbb25.chunk.css",
+    "static/js/2.1b714c54.chunk.js": "/static/js/2.1b714c54.chunk.js",
+    "static/js/2.1b714c54.chunk.js.map": "/static/js/2.1b714c54.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.e493840611e0084efcb25b6f0d8b1bec.js": "/precache-manifest.e493840611e0084efcb25b6f0d8b1bec.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.f7bdbb25.chunk.css.map": "/static/css/2.f7bdbb25.chunk.css.map",
+    "static/css/main.aa9f87e0.chunk.css.map": "/static/css/main.aa9f87e0.chunk.css.map",
+    "static/js/2.1b714c54.chunk.js.LICENSE.txt": "/static/js/2.1b714c54.chunk.js.LICENSE.txt",
+    "static/media/ABylinski.jpg": "/static/media/ABylinski.9be7e4eb.jpg",
+    "static/media/JSzpreglewski.jpg": "/static/media/JSzpreglewski.357b5d5a.jpg",
+    "static/media/TJasinski.jpg": "/static/media/TJasinski.7917d354.jpg",
+    "static/media/bible-kid.jpg": "/static/media/bible-kid.d1db88b7.jpg",
+    "static/media/bible-love.jpg": "/static/media/bible-love.95f56465.jpg",
+    "static/media/conference.jpg": "/static/media/conference.f5304c88.jpg",
+    "static/media/first-communion.jpg": "/static/media/first-communion.bc49c811.jpg",
+    "static/media/kidPainting.jpg": "/static/media/kidPainting.0ed774ec.jpg",
+    "static/media/kidRope.jpg": "/static/media/kidRope.c52373bf.jpg",
+    "static/media/kidToy.jpg": "/static/media/kidToy.b5d2ebae.jpg",
+    "static/media/kidsSchool.jpg": "/static/media/kidsSchool.372ad7a2.jpg",
+    "static/media/love-neighbour.jpg": "/static/media/love-neighbour.cf2d7c54.jpg",
+    "static/media/newspaper.jpg": "/static/media/newspaper.e483def2.jpg",
+    "static/media/Home.module.scss": "/static/media/swduch.27ab6d27.jpg",
+    "static/media/wavesBottom.svg": "/static/media/wavesBottom.cd99d9e4.svg",
+    "static/media/wavesTop.svg": "/static/media/wavesTop.cd99d9e4.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4ac598e5.js",
+    "static/css/2.f7bdbb25.chunk.css",
+    "static/js/2.1b714c54.chunk.js",
+    "static/css/main.aa9f87e0.chunk.css",
+    "static/js/main.1e9f8cef.chunk.js"
+  ]
+}
