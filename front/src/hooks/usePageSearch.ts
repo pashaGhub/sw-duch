@@ -41,11 +41,17 @@ export const usePageSearch = (
         if (axios.isCancel(e)) return;
         setLoading(false);
         console.log(e.response);
-
-        setError({
-          status: e.response.status,
-          message: e.response.data.message,
-        });
+        if (e.response) {
+          setError({
+            status: e.response.status,
+            message: e.response.data.message,
+          });
+        } else {
+          setError({
+            status: 400,
+            message: "Something went wrong..",
+          });
+        }
       });
     return () => cancel();
   }, [type, page, query, resetData]);

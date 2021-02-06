@@ -12,12 +12,7 @@ import s from "./Home.module.scss";
 
 export const Home: React.FC = () => {
   const { adsArr, articlesArr, handleLocation } = useContext(AppContext);
-  // const { loading, error, pages, hasMore } = usePageSearch(
-  //   "article",
-  //   1,
-  //   "",
-  //   false
-  // );
+
   const location = useLocation();
 
   useEffect(() => {
