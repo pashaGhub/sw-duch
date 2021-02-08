@@ -24,13 +24,13 @@ app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/custom-page", require("./routes/custom-page.routes"));
 app.use("/api/uploads", require("./routes/uploads.routes"));
 
-// if (process.env.NODE_ENV === "production") {
-//   app.use("/", express.static(path.join(__dirname, "front", "build")));
+if (process.env.NODE_ENV === "production") {
+  app.use("/", express.static(path.join(__dirname, "front", "build")));
 
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "front", "build", "index.html"));
-//   });
-// }
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "front", "build", "index.html"));
+  });
+}
 
 const PORT = config.get("port") || 5000;
 
@@ -43,7 +43,7 @@ const start = async () => {
       useFindAndModify: false,
     });
 
-    app.listen(5000, () =>
+    app.listen(PORT, () =>
       console.log(`App has been started on port ${PORT}...`)
     );
   } catch (e) {
