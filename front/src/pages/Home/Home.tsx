@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import ImageGallery from "react-image-gallery";
 import { AppContext, ICustomPage } from "../../context/AppContext";
 // import { usePageSearch } from "../../hooks";
 
@@ -8,12 +9,33 @@ import { Sidebar } from "./Sidebar/Sidebar";
 import { Card } from "../../components/Card/Card";
 import { List } from "../../components/List/List";
 
+import Image1 from "../../assets/imgs/swduch.jpg";
+import Image2 from "../../assets/imgs/love-neighbour.jpg";
+import Image3 from "../../assets/imgs/bible-love.jpg";
+import Image4 from "../../assets/imgs/bible-kid.jpg";
+
 import s from "./Home.module.scss";
+import "./Home.scss";
 
 export const Home: React.FC = () => {
   const { adsArr, articlesArr, handleLocation } = useContext(AppContext);
 
   const location = useLocation();
+
+  const images = [
+    {
+      original: Image1,
+    },
+    {
+      original: Image2,
+    },
+    {
+      original: Image3,
+    },
+    {
+      original: Image4,
+    },
+  ];
 
   useEffect(() => {
     handleLocation(location);
@@ -21,7 +43,17 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      <div className={s.mainFoto} />
+      <ImageGallery
+        additionalClass="homeGallery"
+        items={images}
+        showNav={false}
+        showFullscreenButton={false}
+        showPlayButton={false}
+        showThumbnails={false}
+        autoPlay={true}
+        slideInterval={10000}
+        slideDuration={1000}
+      />
       <Decoration />
       <div className={s.homePage}>
         <Sidebar />

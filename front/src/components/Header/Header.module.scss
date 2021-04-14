@@ -21,6 +21,8 @@
   margin: auto;
 
   .logo {
+    color: rgb(73, 0, 0);
+    font-weight: 200;
     line-height: $header-height;
     font-size: 1.8rem;
     margin: 0 $mob-side-margin;
@@ -72,7 +74,7 @@
           min-width: 12rem;
           visibility: hidden;
           background: $dark-color;
-          background: $header-gradient;
+          background: $header-dropdown-color;
           color: $light-color;
           margin-left: -33%;
           padding: 0.5rem 0.2rem;
@@ -93,7 +95,8 @@
             margin-left: -10px;
             border-width: 10px;
             border-style: solid;
-            border-color: transparent transparent $dark-red-color transparent;
+            border-color: transparent transparent $header-dropdown-color
+              transparent;
           }
         }
 
