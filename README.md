@@ -1,6 +1,4 @@
-# Authentication routes
-
-## Register
+# Available routes
 
 ### `POST` `/api/auth/register`
 
@@ -16,8 +14,6 @@ Request body JSON **required fields**:<br>
 <br>
 API returns token which expires in 6h and new created user id.
 
-## Login
-
 ### `POST` `/api/auth/login`
 
 Request body JSON **required fields**:<br>
@@ -31,6 +27,9 @@ Request body JSON **required fields**:<br>
 
 <br>
 API returns token which expires in 6h and new created user id.
+<br>
+<br>
+<br>
 
 # Custom page routes
 
@@ -83,10 +82,11 @@ Default quantity of items per page is **10**.
 ### `DELETE` `/api/custom-page/:pageID`
 
 API returns message _Page successfully deleted!_.
+<br>
+<br>
+<br>
 
 # Uploads routes
-
-## Upload
 
 ### `POST` `/api/uploads/img`
 
