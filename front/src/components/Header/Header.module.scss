@@ -87,17 +87,17 @@
             }
           }
 
-          &::before {
-            content: "";
-            position: absolute;
-            top: -18px;
-            left: 50%;
-            margin-left: -10px;
-            border-width: 10px;
-            border-style: solid;
-            border-color: transparent transparent $header-dropdown-color
-              transparent;
-          }
+          // &::before {
+          //   content: "";
+          //   position: absolute;
+          //   top: -18px;
+          //   left: 50%;
+          //   margin-left: -10px;
+          //   border-width: 10px;
+          //   border-style: solid;
+          //   border-color: transparent transparent $header-dropdown-color
+          //     transparent;
+          // }
         }
 
         &:hover {

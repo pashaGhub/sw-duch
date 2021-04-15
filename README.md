@@ -35,7 +35,7 @@ API returns token which expires in 6h and new created user id.
 
 ### `POST` `/api/custom-page/`
 
-API create a new page.
+API create a new custom page.
 
 Request body JSON **required field**: <br>
 
@@ -52,7 +52,7 @@ Request body JSON **required field**: <br>
 
 ### `POST` `/api/custom-page/:pageID`
 
-API update existing page by id.
+API update existing custom page by id.
 
 Request body JSON **required field**: <br>
 
@@ -70,15 +70,15 @@ Request body JSON **required field**: <br>
 
 ### `GET` `/api/custom-page?type={type}&page={page}&query={query}`
 
-API search all existing pages by query.<br>
+API search all existing custom pages by query.<br>
 
-API returns finded items, limit per page, number of page, previous page (if exist), next page (if exist).<br>
+API returns finded items(custom pages), limit per page, number of page, previous page (if exist), next page (if exist).<br>
 
 Default quantity of items per page is **10**.
 
 ### `DELETE` `/api/custom-page/:pageID`
 
-API delete the page by id.<br>
+API delete custom page by id.<br>
 
 API returns message _Page successfully deleted!_.
 <br>

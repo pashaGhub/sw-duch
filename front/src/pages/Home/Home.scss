@@ -1,6 +1,14 @@
+@import "../../assets/variables.scss";
+@import "../../assets/mixins.scss";
+
 .homeGallery {
+  z-index: -1;
   margin-top: -2rem;
   width: 100%;
+
+  @include maxResponsive(768px) {
+    display: none;
+  }
 
   .image-gallery-content .image-gallery-slide .image-gallery-image {
     object-fit: cover;

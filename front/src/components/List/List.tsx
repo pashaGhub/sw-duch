@@ -18,13 +18,11 @@ export const List: React.FC<IList> = (props) => {
           <div className={s.listItem} key={ind}>
             <Link to={`/${item._id}`}>
               <img src={item.image} alt="" />
-            </Link>
-            <div>
-              <Link to={`/${item._id}`}>
+              <div>
                 <h3>{item.title}</h3>
-              </Link>
-              <p>{item.description}</p>
-            </div>
+                <p>{item.description}</p>
+              </div>
+            </Link>
           </div>
         );
       })}

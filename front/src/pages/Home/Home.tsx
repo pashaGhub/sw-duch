@@ -6,6 +6,7 @@ import { AppContext, ICustomPage } from "../../context/AppContext";
 
 import { Decoration } from "../../components/Decoration/Decoration";
 import { Sidebar } from "./Sidebar/Sidebar";
+import { Leftbar } from "./Leftbar/Leftbar";
 import { Card } from "../../components/Card/Card";
 import { List } from "../../components/List/List";
 
@@ -54,6 +55,7 @@ export const Home: React.FC = () => {
         slideInterval={10000}
         slideDuration={1000}
       />
+      <div className={s.mobileFoto} />
       <Decoration />
       <div className={s.homePage}>
         <Sidebar />
@@ -68,16 +70,8 @@ export const Home: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className={s.articleBar}>
-          <div className={s.articleBarContainer}>
-            <h1 className={s.sectionTitle}>Artykuły</h1>
-            <List
-              arr={articlesArr.filter(
-                (item: ICustomPage, ind: number) => ind < 4
-              )}
-            />
-            )
-          </div>
+        <div className={s.leftbar}>
+          <Leftbar arr={articlesArr} />
         </div>
       </div>
     </>
