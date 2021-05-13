@@ -50,6 +50,60 @@
           grid-template-rows: auto;
         }
       }
+
+      .socialmedia {
+        display: flex;
+
+        a {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          text-decoration: none;
+          width: 4.5rem;
+          height: 4.5rem;
+          font-size: 2.5rem;
+          color: #3b5999;
+
+          @include minResponsive(600px) {
+            margin-left: 1rem;
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #3b5999;
+            border-radius: 50%;
+            z-index: -1;
+            transform: scale(0);
+            transition: 0.5s;
+          }
+
+          &:hover {
+            color: #fff;
+
+            &::before {
+              transform: scale(1);
+            }
+          }
+        }
+
+        span {
+          font-size: 1.8rem;
+          font-weight: 200;
+          margin: auto;
+          color: #3b5999;
+
+          @include minResponsive(600px) {
+            font-size: 2.5rem;
+          }
+        }
+      }
     }
   }
 }

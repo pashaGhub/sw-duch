@@ -2,8 +2,7 @@ interface IROUTES {
   home: string;
   activitiesKids: string;
   activitiesChoirs: string;
-  newsAds: string;
-  newsArticles: string;
+  news: string;
   contacts: string;
   login: string;
   register: string;
@@ -15,8 +14,7 @@ export const ROUTES: IROUTES = {
   home: "/",
   activitiesKids: "/activities/kids",
   activitiesChoirs: "/activities/choirs",
-  newsAds: "/news/ads",
-  newsArticles: "/news/articles",
+  news: "/news",
   contacts: "/contacts",
   login: "/login",
   register: "/register",

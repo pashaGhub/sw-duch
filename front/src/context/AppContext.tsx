@@ -112,7 +112,7 @@ const adsArr: ICustomPage[] = [
 const articlesArr: ICustomPage[] = [
   {
     _id: `11`,
-    date: "",
+    date: "2021-01-03T20:38:50.711Z",
     type: "article",
     image: kid,
     title: "Jak czytać Pismo Święte",
@@ -123,7 +123,7 @@ const articlesArr: ICustomPage[] = [
   },
   {
     _id: `22`,
-    date: "",
+    date: "2021-01-01T20:54:07.158Z",
     type: "article",
     image: cap,
     title: "Kochaj bliźniego swego jak siebie samego",
@@ -134,7 +134,7 @@ const articlesArr: ICustomPage[] = [
   },
   {
     _id: `33`,
-    date: "",
+    date: "Fri Apr 16 2021 10:41:55 GMT+0300 (Eastern European Summer Time)",
     type: "article",
     image: love,
     title: "Dlaczego kochać jest ciężko?",
@@ -145,7 +145,7 @@ const articlesArr: ICustomPage[] = [
   },
   {
     _id: `44`,
-    date: "",
+    date: "Fri Apr 16 2021 10:55:55 GMT+0300 (Eastern European Summer Time)",
     type: "article",
     image: love,
     title: "Nowy wlog",
@@ -156,7 +156,7 @@ const articlesArr: ICustomPage[] = [
   },
   {
     _id: `55`,
-    date: "",
+    date: "Fri Apr 16 2021 10:46:14 GMT+0300 (Eastern European Summer Time)",
     type: "article",
     image: love,
     title: "Dlaczego kochać jest ciężko?",

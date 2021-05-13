@@ -37,6 +37,7 @@ router.get("/", async (req, res) => {
 
     if (type !== "all") {
       results.pages = await CustomPage.find({ type, title: { $regex: regex } })
+        .sort({ date: -1 })
         .limit(limit)
         .skip(startIndex)
         .exec();
@@ -49,6 +50,7 @@ router.get("/", async (req, res) => {
         .exec();
     } else {
       results.pages = await CustomPage.find({ title: { $regex: regex } })
+        .sort({ date: -1 })
         .limit(limit)
         .skip(startIndex)
         .exec();

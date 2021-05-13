@@ -1,0 +1,88 @@
+@import "../../assets/mixins.scss";
+@import "../../assets/variables.scss";
+
+.container {
+  @include defaultContainer;
+  @include boxBorder;
+
+  .searchContainer {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid $ash-color;
+
+    @include minResponsive(600px) {
+      display: flex;
+    }
+
+    .searchInput {
+      width: 100%;
+      margin-bottom: 1rem;
+      input:focus {
+        outline: none;
+      }
+
+      @include minResponsive(600px) {
+        margin-right: 1rem;
+        margin-bottom: unset;
+      }
+    }
+
+    .select {
+      width: 7rem;
+      margin: auto;
+    }
+  }
+  .loading {
+    text-align: center;
+  }
+
+  .title {
+    @include title($font-size: 2.5rem);
+    padding: 1rem 0 3rem;
+  }
+
+  .listContainer {
+    .listItem {
+      @include customLink();
+      width: 100%;
+      height: auto;
+      margin-bottom: 4rem;
+
+      a {
+        height: auto;
+        color: unset;
+        display: block;
+
+        img {
+          width: 100%;
+          height: auto;
+          max-width: -webkit-fill-available;
+          object-fit: cover;
+        }
+        @include minResponsive(600px) {
+          display: flex;
+          max-height: 20rem;
+
+          img {
+            width: 15rem;
+            margin-right: 1rem;
+          }
+        }
+      }
+
+      h3 {
+        @include subtitle($bottom: 0);
+        @include customLink();
+      }
+
+      .date {
+        margin-bottom: 1rem;
+        font-weight: 300;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ export const usePageSearch = (
   type: "ad" | "article" | "all" = "all",
   page: number = 1,
   query: string = "",
-  resetData: boolean
+  resetData?: boolean
 ) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(false);

@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ImageGallery from "react-image-gallery";
 import { AppContext, ICustomPage } from "../../context/AppContext";
-// import { usePageSearch } from "../../hooks";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 
 import { Decoration } from "../../components/Decoration/Decoration";
 import { Sidebar } from "./Sidebar/Sidebar";
@@ -67,6 +68,13 @@ export const Home: React.FC = () => {
                 .map((item: ICustomPage) => (
                   <Card data={item} />
                 ))}
+            </div>
+
+            <div className={s.socialmedia}>
+              <a href="https://www.facebook.com/parafiadswilno" target="_blank">
+                <FontAwesomeIcon icon={faFacebookF} />
+              </a>
+              <span>Znajdź nas na facebook'u!</span>
             </div>
           </div>
         </div>

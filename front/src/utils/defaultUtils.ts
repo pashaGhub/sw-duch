@@ -8,5 +8,5 @@ export const formatDate = (date: string) => {
   const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
   const yyyy = today.getFullYear();
 
-  return mm + "/" + dd + "/" + yyyy;
+  return yyyy + "/" + mm + "/" + dd;
 };

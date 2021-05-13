@@ -41,15 +41,11 @@ export const Header: React.FC = () => {
               </div>
             </li>
             <li>
-              <span className={s.navItem}>Wiadomości</span>
-              <div className={s.dropdown}>
-                <NavLink to={ROUTES.newsAds} exact>
-                  Ogłoszenia
+              <span className={s.navItem}>
+                <NavLink to={ROUTES.news} exact>
+                  Wiadomości
                 </NavLink>
-                <NavLink to={ROUTES.newsArticles} exact>
-                  Artykuły
-                </NavLink>
-              </div>
+              </span>
             </li>
             <li>
               <span className={s.navItem}>

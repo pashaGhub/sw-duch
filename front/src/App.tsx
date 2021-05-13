@@ -8,8 +8,8 @@ import { CustomPage } from "./components/CustomPage/CustomPage";
 import { Home } from "./pages/Home/Home";
 import { Kids } from "./pages/activities/Kids/Kids";
 import { Choirs } from "./pages/activities/Choirs/Choirs";
-import { Ads } from "./pages/news/Ads/Ads";
-import { ArticlesPage } from "./pages/news/ArticlesPage/ArticlesPage";
+
+import { News } from "./pages/News/News";
 import { Contacts } from "./pages/Contacts/Contacts";
 
 // CMS pages
@@ -47,8 +47,7 @@ function App() {
             <Route exact path={ROUTES.home} component={Home} />
             <Route exact path={ROUTES.activitiesKids} component={Kids} />
             <Route exact path={ROUTES.activitiesChoirs} component={Choirs} />
-            <Route exact path={ROUTES.newsAds} component={Ads} />
-            <Route exact path={ROUTES.newsArticles} component={ArticlesPage} />
+            <Route exact path={ROUTES.news} component={News} />
             {arr.map((item, ind) => {
               return (
                 <Route

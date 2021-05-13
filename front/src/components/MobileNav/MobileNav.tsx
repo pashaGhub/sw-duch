@@ -35,15 +35,11 @@ export const MobileNav: React.FC = (props) => {
             </div>
           </li>
           <li>
-            <span className={s.pointer}>Wiadomości</span>
-            <div className={s.dropdown}>
-              <Link to={ROUTES.newsAds} onClick={() => closeMobNav()}>
-                Ogłoszenia
+            <span className={s.pointer}>
+              <Link to={ROUTES.news} onClick={() => closeMobNav()}>
+                Wiadomości
               </Link>
-              <Link to={ROUTES.newsArticles} onClick={() => closeMobNav()}>
-                Artykuły
-              </Link>
-            </div>
+            </span>
           </li>
           <li>
             <Link to={ROUTES.contacts} onClick={() => closeMobNav()}>
