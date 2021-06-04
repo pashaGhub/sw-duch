@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-const backendUrl = "http://34.88.72.177";
+const backendUrl = "https://sw-duch.netlify.app";
 
 export const usePageSearch = (
   type: "ad" | "article" | "all" = "all",

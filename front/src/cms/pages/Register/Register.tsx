@@ -42,10 +42,14 @@ export const Register: React.FC = () => {
 
     setPassMismatched(false);
     try {
-      const data = await request("api/auth/register", "POST", {
-        username,
-        password,
-      });
+      const data = await request(
+        "https://sw-duch.netlify.app/api/auth/register",
+        "POST",
+        {
+          username,
+          password,
+        }
+      );
 
       if (data && !data.error) {
         login(data.token, data.userId);

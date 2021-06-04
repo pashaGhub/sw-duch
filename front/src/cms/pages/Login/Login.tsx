@@ -33,7 +33,11 @@ export const Login: React.FC = () => {
   }, [isAuthenticated]);
 
   const onSubmit = async (props: ILoginForm) => {
-    const data = await request("/api/auth/login", "POST", props);
+    const data = await request(
+      "https://sw-duch.netlify.app/api/auth/login",
+      "POST",
+      props
+    );
 
     if (data.token) {
       login(data.token, data.userId);
