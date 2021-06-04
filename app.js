@@ -26,13 +26,13 @@ app.use("/api/custom-page", require("./routes/custom-page.routes"));
 app.use("/api/current-news", require("./routes/current-news.routes"));
 app.use("/api/uploads", require("./routes/uploads.routes"));
 
-// if (process.env.NODE_ENV === "production") {
-//   app.use("/", express.static(path.join(__dirname, "front", "build")));
+if (process.env.NODE_ENV === "production") {
+  app.use("/", express.static(path.join(__dirname, "front", "build")));
 
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "front", "build", "index.html"));
-//   });
-// }
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "front", "build", "index.html"));
+  });
+}
 
 const PORT = config.get("port") || 5000;
 
