@@ -1,4 +1,5 @@
 import axios from "axios";
+const backendUrl = "http://34.88.72.177";
 
 export const newCurrentNews = async (id: string, token: string) => {
   const headers = {
@@ -7,7 +8,7 @@ export const newCurrentNews = async (id: string, token: string) => {
   };
   try {
     const response = await axios.post(
-      `/api/current-news/${id}`,
+      `${backendUrl}/api/current-news/${id}`,
       {},
       { headers }
     );
@@ -20,7 +21,7 @@ export const newCurrentNews = async (id: string, token: string) => {
 
 export const getCurrentNews = async () => {
   try {
-    const response = await axios.get(`/api/current-news/`);
+    const response = await axios.get(`${backendUrl}/api/current-news/`);
 
     return response;
   } catch (e) {
@@ -34,9 +35,12 @@ export const deleteCurrentNew = async (id: string, token: string) => {
     Authorization: `Bearer ${token}`,
   };
   try {
-    const response = await axios.delete(`/api/current-news/${id}`, {
-      headers,
-    });
+    const response = await axios.delete(
+      `${backendUrl}/api/current-news/${id}`,
+      {
+        headers,
+      }
+    );
 
     return response;
   } catch (e) {

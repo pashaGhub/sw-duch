@@ -1,4 +1,5 @@
 import axios from "axios";
+const backendUrl = "http://34.88.72.177";
 
 export const newEvent = async (id: string, token: string) => {
   const headers = {
@@ -6,7 +7,11 @@ export const newEvent = async (id: string, token: string) => {
     Authorization: `Bearer ${token}`,
   };
   try {
-    const response = await axios.post(`/api/events/${id}`, {}, { headers });
+    const response = await axios.post(
+      `${backendUrl}/api/events/${id}`,
+      {},
+      { headers }
+    );
 
     return response;
   } catch (e) {
@@ -16,7 +21,7 @@ export const newEvent = async (id: string, token: string) => {
 
 export const getEvents = async () => {
   try {
-    const response = await axios.get(`/api/events/`);
+    const response = await axios.get(`${backendUrl}/api/events/`);
 
     return response;
   } catch (e) {
@@ -30,7 +35,7 @@ export const deleteEvent = async (id: string, token: string) => {
     Authorization: `Bearer ${token}`,
   };
   try {
-    const response = await axios.delete(`/api/events/${id}`, {
+    const response = await axios.delete(`${backendUrl}/api/events/${id}`, {
       headers,
     });
 

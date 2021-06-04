@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+const backendUrl = "http://34.88.72.177";
 
 export const usePageSearch = (
   type: "ad" | "article" | "all" = "all",
@@ -26,7 +27,7 @@ export const usePageSearch = (
     let cancel: any;
     axios({
       method: "GET",
-      url: `/api/custom-page?type=${type}&page=${page}&query=${query}`,
+      url: `${backendUrl}/api/custom-page?type=${type}&page=${page}&query=${query}`,
       headers,
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
