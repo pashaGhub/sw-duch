@@ -1,5 +1,5 @@
 import axios from "axios";
-const backendUrl = "//34.88.72.177";
+const backendUrl = "http://34.88.72.177";
 
 export const newCurrentNews = async (id: string, token: string) => {
   const headers = {
