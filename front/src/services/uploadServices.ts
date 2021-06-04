@@ -1,5 +1,5 @@
 import axios from "axios";
-const backendUrl = "http://34.88.72.177";
+const backendUrl = "//34.88.72.177";
 
 export const uploadImgs = async (options: any) => {
   const { onSuccess, onError, file, onProgress } = options;

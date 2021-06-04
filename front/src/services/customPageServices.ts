@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ICustomPage } from "../context/AppContext";
-const backendUrl = "http://34.88.72.177";
+const backendUrl = "//34.88.72.177";
 
 export const createPage = async (data: any, token: string) => {
   const headers = {

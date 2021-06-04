@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-const backendUrl = "http://34.88.72.177";
+const backendUrl = "//34.88.72.177";
 
 export const usePageSearch = (
   type: "ad" | "article" | "all" = "all",
