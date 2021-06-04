@@ -45,6 +45,7 @@
     "extends": "react-app"
   },
   "proxy": "http://34.88.72.177",
+  "homepage": ".",
   "browserslist": {
     "production": [
       ">0.2%",
