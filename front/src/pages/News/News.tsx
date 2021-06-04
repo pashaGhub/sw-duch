@@ -69,10 +69,24 @@ export const News: React.FC = () => {
         </Select>
       </div>
       <div className={s.listContainer}>
-        {pages.map((item, ind) => {
-          if (pages.length === ind + 1) {
+        {!!pages.length &&
+          pages.map((item, ind) => {
+            if (pages.length === ind + 1) {
+              return (
+                <div className={s.listItem} key={ind} ref={lastPageElementRef}>
+                  <Link to={`/singlepage/${item._id}`}>
+                    <img src={item.image} alt="" />
+                    <div>
+                      <h3>{item.title}</h3>
+                      <div className={s.date}>{formatDate(item.date)}</div>
+                      <p>{item.description}</p>
+                    </div>
+                  </Link>
+                </div>
+              );
+            }
             return (
-              <div className={s.listItem} key={ind} ref={lastPageElementRef}>
+              <div className={s.listItem} key={ind}>
                 <Link to={`/singlepage/${item._id}`}>
                   <img src={item.image} alt="" />
                   <div>
@@ -83,20 +97,7 @@ export const News: React.FC = () => {
                 </Link>
               </div>
             );
-          }
-          return (
-            <div className={s.listItem} key={ind}>
-              <Link to={`/singlepage/${item._id}`}>
-                <img src={item.image} alt="" />
-                <div>
-                  <h3>{item.title}</h3>
-                  <div className={s.date}>{formatDate(item.date)}</div>
-                  <p>{item.description}</p>
-                </div>
-              </Link>
-            </div>
-          );
-        })}
+          })}
       </div>
       {!loading && !error && !pages.length && (
         <h2>Nie znaleziono żadnej informacji</h2>

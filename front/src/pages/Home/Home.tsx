@@ -23,11 +23,13 @@ import Image4 from "../../assets/imgs/bible-kid.jpg";
 
 import s from "./Home.module.scss";
 import "./Home.scss";
+import { Spinner } from "../../components/Spinner/Spinner";
 
 export const Home: React.FC = () => {
   const { handleLocation } = useContext(AppContext);
   const [news, setNews] = useState<Array<ICustomPage>>([]);
   const [articles, setArticles] = useState<Array<ICustomPage>>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const fetchCurrentNews = async () => {
     const data: any = await getCurrentNews();
@@ -54,8 +56,10 @@ export const Home: React.FC = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetchCurrentNews();
     fetchArticles();
+    setLoading(false);
   }, []);
 
   const location = useLocation();
@@ -99,9 +103,9 @@ export const Home: React.FC = () => {
         <div className={s.container}>
           <div className={s.news}>
             <div className={s.newsContainer}>
-              {news.map((item: ICustomPage) => (
-                <Card data={item} />
-              ))}
+              {!!news.length &&
+                news.map((item: ICustomPage) => <Card data={item} />)}
+              <Spinner loading={loading} />
             </div>
           </div>
 
@@ -172,8 +176,9 @@ export const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className={s.leftbar}>
-          <Rightbar arr={articles} />
+        <div className={s.rightbar}>
+          {!!articles.length && <Rightbar arr={articles} />}
+          <Spinner loading={loading} />
         </div>
       </div>
     </>
