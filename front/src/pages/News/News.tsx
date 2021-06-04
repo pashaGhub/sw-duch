@@ -1,16 +1,15 @@
 import React, { useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { Select, Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
+import { Select } from "antd";
 
 import { CustomInput } from "../../components/CustomInput/CustomInput";
+import { Spinner } from "../../components/Spinner/Spinner";
 import { usePageSearch } from "../../hooks";
 import { formatDate } from "../../utils/defaultUtils";
 
 import s from "./News.module.scss";
 
 const { Option } = Select;
-const antIcon = <LoadingOutlined spin />;
 
 export const News: React.FC = () => {
   const [query, setQuery] = useState<string>("");
@@ -74,7 +73,7 @@ export const News: React.FC = () => {
           if (pages.length === ind + 1) {
             return (
               <div className={s.listItem} key={ind} ref={lastPageElementRef}>
-                <Link to={`/${item._id}`}>
+                <Link to={`/singlepage/${item._id}`}>
                   <img src={item.image} alt="" />
                   <div>
                     <h3>{item.title}</h3>
@@ -87,7 +86,7 @@ export const News: React.FC = () => {
           }
           return (
             <div className={s.listItem} key={ind}>
-              <Link to={`/${item._id}`}>
+              <Link to={`/singlepage/${item._id}`}>
                 <img src={item.image} alt="" />
                 <div>
                   <h3>{item.title}</h3>
@@ -103,9 +102,7 @@ export const News: React.FC = () => {
         <h2>Nie znaleziono żadnej informacji</h2>
       )}
       {!loading && error && <h2 style={{ color: "red" }}>Błąd systemu.</h2>}
-      <div className={s.loading}>
-        <Spin spinning={loading} indicator={antIcon} tip={"loading..."} />
-      </div>
+      <Spinner loading={loading} />
     </div>
   );
 };

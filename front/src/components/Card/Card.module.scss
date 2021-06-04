@@ -46,23 +46,12 @@
     }
 
     a {
+      @include customButton;
       position: relative;
       display: inline-block;
-      margin: 0.5rem 0 0;
-      padding: 0.5rem 1rem;
-      color: $light-color;
-      border: 1px solid $light-color;
-      text-decoration: none;
-      transition: 0.5s;
       transform: translateY(-30px);
       opacity: 0;
       visibility: hidden;
-
-      &:hover {
-        transition: 0.4s;
-        background: $dark-red-color;
-        border-color: $dark-red-color;
-      }
     }
   }
 

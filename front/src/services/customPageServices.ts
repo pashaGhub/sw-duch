@@ -31,6 +31,21 @@ export const updatePage = async (data: ICustomPage, token: string) => {
   }
 };
 
+export const getSinglePage = async (id: string) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  try {
+    const response = await axios.get(`/api/custom-page/${id}`, {
+      headers,
+    });
+
+    return response;
+  } catch (e) {
+    return { status: e.response.status, message: e.response.data.message };
+  }
+};
+
 export const deletePage = async (id: string, token: string) => {
   const headers = {
     "Content-Type": "application/json",
@@ -48,24 +63,24 @@ export const deletePage = async (id: string, token: string) => {
 };
 
 export const getPages = async (
-  token: string,
-  type: "ad" | "article" | "all" = "article",
+  type: "ad" | "article" | "all" = "all",
   page: number = 1,
-  query: string = ""
+  query: string = "",
+  limit?: number
 ) => {
   const headers = {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
   };
 
+  let fetchUrl = `/api/custom-page?type=${type}&page=${page}&query=${query}`;
+
+  if (!!limit) {
+    fetchUrl = `/api/custom-page?type=${type}&page=${page}&query=${query}&limit=${limit}`;
+  }
   try {
-    const data = await axios.get(
-      `/api/custom-page?type=${type}&page=${page}&query=${query}`,
-      {
-        headers,
-      }
-    );
-    console.log(data);
+    const data = await axios.get(fetchUrl, {
+      headers,
+    });
 
     return data;
   } catch (e) {

@@ -1,16 +1,21 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import ImageGallery from "react-image-gallery";
 import { AppContext, ICustomPage } from "../../context/AppContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 
-import { Decoration } from "../../components/Decoration/Decoration";
-import { Sidebar } from "./Sidebar/Sidebar";
-import { Leftbar } from "./Leftbar/Leftbar";
-import { Card } from "../../components/Card/Card";
-import { List } from "../../components/List/List";
+import { getCurrentNews } from "../../services/currentNewsServices";
+import { getPages } from "../../services/customPageServices";
 
+import { Decoration } from "../../components/Decoration/Decoration";
+import { Leftbar } from "./Leftbar/Leftbar";
+import { Rightbar } from "./Rightbar/Rightbar";
+import { Card } from "../../components/Card/Card";
+
+import main from "../../assets/imgs/main.jpeg";
+import worshipImg from "../../assets/imgs/worship.jpg";
+import youtubeimg from "../../assets/imgs/youtubeimg.jpg";
 import Image1 from "../../assets/imgs/swduch.jpg";
 import Image2 from "../../assets/imgs/love-neighbour.jpg";
 import Image3 from "../../assets/imgs/bible-love.jpg";
@@ -20,7 +25,38 @@ import s from "./Home.module.scss";
 import "./Home.scss";
 
 export const Home: React.FC = () => {
-  const { adsArr, articlesArr, handleLocation } = useContext(AppContext);
+  const { handleLocation } = useContext(AppContext);
+  const [news, setNews] = useState<Array<ICustomPage>>([]);
+  const [articles, setArticles] = useState<Array<ICustomPage>>([]);
+
+  const fetchCurrentNews = async () => {
+    const data: any = await getCurrentNews();
+
+    if (data.status === 201 || 200) {
+      setNews(data.data.pages);
+    }
+
+    if (data.status === 500) {
+      console.log("Cannot load the news");
+    }
+  };
+
+  const fetchArticles = async () => {
+    const data: any = await getPages("article", 1, "", 5);
+
+    if (data.status === 201 || 200) {
+      setArticles(data.data.pages);
+    }
+
+    if (data.status === 500) {
+      console.log("Cannot load the articles");
+    }
+  };
+
+  useEffect(() => {
+    fetchCurrentNews();
+    fetchArticles();
+  }, []);
 
   const location = useLocation();
 
@@ -59,27 +95,85 @@ export const Home: React.FC = () => {
       <div className={s.mobileFoto} />
       <Decoration />
       <div className={s.homePage}>
-        <Sidebar />
+        <Leftbar />
         <div className={s.container}>
           <div className={s.news}>
             <div className={s.newsContainer}>
-              {adsArr
-                .filter((item: ICustomPage, ind: number) => ind < 3)
-                .map((item: ICustomPage) => (
-                  <Card data={item} />
-                ))}
-            </div>
-
-            <div className={s.socialmedia}>
-              <a href="https://www.facebook.com/parafiadswilno" target="_blank">
-                <FontAwesomeIcon icon={faFacebookF} />
-              </a>
-              <span>Znajdź nas na facebook'u!</span>
+              {news.map((item: ICustomPage) => (
+                <Card data={item} />
+              ))}
             </div>
           </div>
+
+          <div className={s.history}>
+            <img src={main} alt="main swduch" />
+            <div className={s.historyText}>
+              <h3>Historia kościoła</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum
+                accusantium, laudantium aliquid, nisi inventore eum molestiae
+                dolores suscipit esse distinctio nesciunt laboriosam cum facilis
+                culpa expedita? Accusantium hic odio nihil! Lorem ipsum dolor
+                sit amet, consectetur adipisicing elit. Harum accusantium,
+                laudantium aliquid, nisi inventore eum molestiae dolores
+                suscipit esse distinctio nesciunt laboriosam cum facilis culpa
+                expedita? Accusantium hic odio nihil!Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Harum accusantium, laudantium
+                aliquid, nisi inventore eum molestiae dolores suscipit esse
+                distinctio nesciunt laboriosam cum facilis culpa expedita?
+                Accusantium hic odio nihil!
+                <br />
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum
+                accusantium, laudantium aliquid, nisi inventore eum molestiae
+                dolores suscipit esse distinctio nesciunt laboriosam cum facilis
+                culpa expedita? Accusantium hic odio nihil!Lorem ipsum dolor sit
+                amet, consectetur adipisicing elit. Harum accusantium,
+              </p>
+
+              <a
+                href={`${
+                  window.location.pathname.split("/")[1]
+                }/singlepage/60b8d333eead103aa65bdb3b`}
+              >
+                Więcej..
+              </a>
+            </div>
+          </div>
+          <div className={s.socialmedia}>
+            <a href="https://www.facebook.com/parafiadswilno" target="_blank">
+              <FontAwesomeIcon icon={faFacebookF} />
+            </a>
+            <span>Znajdź nas na facebook'u!</span>
+          </div>
+          <div className={s.worship}>
+            <img src={worshipImg} alt="" />
+            <div className={s.worshipText}>
+              <h3>Uwielbiaj Boga razem z nami!</h3>
+              <p>
+                Wieczór uwielbienia każdy pierwszy wtorek miesiąca. Lorem ipsum
+                dolor sit amet consectetur adipisicing elit. Laboriosam quidem
+                autem perferendis incidunt eaque in consequuntur omnis
+                necessitatibus placeat sapiente exercitationem dolorum nesciunt,
+                fugiat rerum sunt, eum maiores blanditiis laudantium.{" "}
+              </p>
+            </div>
+          </div>
+          <div className={s.youtube}>
+            <a
+              href="https://www.youtube.com/channel/UCVcv1m3Rivkkl9rrsPj2eQA"
+              target="_blank"
+            >
+              <img src={youtubeimg} alt="" />
+              <div className={s.youtubeText}>
+                <h3>Odwiedź nasz kanał Youtube!</h3>
+              </div>
+            </a>
+          </div>
         </div>
+
         <div className={s.leftbar}>
-          <Leftbar arr={articlesArr} />
+          <Rightbar arr={articles} />
         </div>
       </div>
     </>

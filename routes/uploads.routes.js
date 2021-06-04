@@ -28,7 +28,6 @@ const imgFilter = (req, file, cb) => {
 const uploadImg = multer({
   storage: storage,
   onError: function (err, next) {
-    console.log("error", err);
     next(err);
   },
   limits: {

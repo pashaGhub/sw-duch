@@ -17,7 +17,9 @@ export const Card: React.FC<ICard> = ({ data }) => {
         <h3>{data.title}</h3>
 
         <p>{data.description}</p>
-        <Link to={`/${data._id}`}>Więcej..</Link>
+        <Link to={`${window.location.origin}/singlepage/${data._id}`}>
+          Więcej..
+        </Link>
       </div>
     </div>
   );

@@ -48,16 +48,7 @@ function App() {
             <Route exact path={ROUTES.activitiesKids} component={Kids} />
             <Route exact path={ROUTES.activitiesChoirs} component={Choirs} />
             <Route exact path={ROUTES.news} component={News} />
-            {arr.map((item, ind) => {
-              return (
-                <Route
-                  exact
-                  path={`/${item._id}`}
-                  component={() => <CustomPage info={item} />}
-                  key={ind}
-                />
-              );
-            })}
+            <Route exact path={ROUTES.singlepage} component={CustomPage} />
             <Route exact path={ROUTES.contacts} component={Contacts} />
             <Route exact path={ROUTES.login} component={Login} />
             <Route exact path={ROUTES.register} component={Register} />

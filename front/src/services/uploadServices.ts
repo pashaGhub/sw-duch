@@ -16,7 +16,6 @@ export const uploadImgs = async (options: any) => {
     const res = await axios.post("/api/uploads/img", formData, config);
 
     onSuccess("Ok");
-    console.log("server res: ", res);
   } catch (err) {
     onError(err.response.statusText);
   }

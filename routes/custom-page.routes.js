@@ -1,5 +1,4 @@
 const { Router } = require("express");
-const config = require("config");
 const auth = require("../middleware/auth.middleware");
 const CustomPage = require("../models/CustomPage");
 const router = Router();
@@ -19,13 +18,13 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
-// /api/custom-page
+// /api/custom-page?type=${type}&page=${page}&query=${query}&limit=${limit}
 router.get("/", async (req, res) => {
   try {
     const type = req.query.type;
     const page = parseInt(req.query.page);
     const query = req.query.query;
-    const limit = 10;
+    const limit = !!req.query.limit ? parseInt(req.query.limit) : 10;
     let quantityOfPages = 0;
 
     const startIndex = (page - 1) * limit;
@@ -90,6 +89,19 @@ router.post("/:id", auth, async (req, res) => {
     res
       .status(500)
       .json({ message: "Something went wrong in update custom page" });
+  }
+});
+
+// /api/custom-page/:id - get page by id
+router.get("/:id", async (req, res) => {
+  try {
+    const findedPage = await CustomPage.findById(req.params.id);
+    res.status(200).json({ page: findedPage });
+  } catch (e) {
+    console.log(e);
+    res
+      .status(500)
+      .json({ message: "Something went wrong in get custom page" });
   }
 });
 

@@ -1,56 +1,85 @@
-@import "../../../assets/mixins.scss";
 @import "../../../assets/variables.scss";
+@import "../../../assets/mixins.scss";
 
 .container {
-  margin: 2rem $mob-side-margin 0;
+  grid-area: sidebar;
+  width: 100%;
   height: auto;
-  padding: 1rem;
-  @include boxBorder;
+  z-index: 100;
+  font-size: 110%;
+  // height: 100vh;
 
   @include minResponsive(1100px) {
-    margin: unset;
-    margin-right: 1rem;
+    font-size: 100%;
   }
 
-  .leftbarTitle {
-    @include title();
-    padding-bottom: 2rem;
+  .positionSticky {
+    padding: 1rem 1rem 2rem;
+    margin-bottom: 2rem;
+    @include boxBorder;
+
+    @include maxResponsive(1099px) {
+      margin: -3rem $mob-side-margin 0;
+      backdrop-filter: blur(5px);
+      background: rgba(225, 225, 225, 0.3);
+    }
+
+    @include responsiveInterval(600px, 1099px) {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @include minResponsive(1100px) {
+      margin-left: 1rem;
+      position: -webkit-sticky;
+      position: sticky;
+      top: $header-height + 1rem;
+    }
   }
 
-  .listItem {
-    @include customLink();
-    width: 100%;
-    height: auto;
-    margin-bottom: 4rem;
+  h3 {
+    font-weight: 600;
+  }
 
-    a {
-      height: auto;
-      color: unset;
-      max-height: 20rem;
+  .schedule {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      margin-top: 1rem;
 
-      img {
-        width: 100%;
-        height: 100%;
-        max-width: -webkit-fill-available;
-        object-fit: cover;
-      }
-      @include responsiveInterval(600px, 1099px) {
-        display: flex;
+      li {
+        line-height: 1.6rem;
 
-        img {
-          width: 15rem;
-          margin-right: 1rem;
+        span {
+          font-weight: 600;
         }
       }
     }
+  }
 
-    h3 {
-      @include subtitle();
-      @include customLink();
+  .upcomingEvents {
+    margin-top: 1rem;
+    @include responsiveInterval(600px, 1099px) {
+      margin: 0;
+      text-align: end;
+      padding-left: 1rem;
     }
 
-    &:last-child {
-      margin-bottom: 0;
+    @include minResponsive(1100px) {
+      margin-top: 2rem;
+    }
+
+    .singleEvent {
+      padding-top: 1rem;
+      h4 {
+        font-weight: 600;
+        font-size: 1rem;
+        padding-bottom: 0.5rem;
+      }
+      p {
+        font-weight: 350;
+      }
     }
   }
 }

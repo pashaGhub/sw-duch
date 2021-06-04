@@ -9,6 +9,7 @@ import { ROUTES } from "../../../constants";
 
 import "./UploadImg.scss";
 import axios from "axios";
+import { log } from "console";
 
 interface IUploadItem {
   _id: string;
@@ -37,26 +38,25 @@ export const UploadImg: React.FC<UploadImg> = ({
 
   const history = useHistory();
   const message = useMessage();
+  const fetchData = async () => {
+    const data = await getUploadImgs(token);
+    if (data.length || data.length === 0) {
+      const updatedPath = data.map((item: IUploadItem) => {
+        return {
+          uid: item._id,
+          name: item.path.split("uploads\\").join(""),
+          status: "done",
+          url: `${backUrl}${item.path}`,
+        };
+      });
+      setImgList(updatedPath);
+      setLoading(false);
+    } else {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await getUploadImgs(token);
-      if (data.length || data.length === 0) {
-        const updatedPath = data.map((item: IUploadItem) => {
-          return {
-            uid: item._id,
-            name: item.path.split("uploads\\").join(""),
-            status: "done",
-            url: `${backUrl}${item.path}`,
-          };
-        });
-        setImgList(updatedPath);
-        setLoading(false);
-      } else {
-        setLoading(false);
-      }
-    };
-
     fetchData();
   }, []);
 
@@ -83,6 +83,7 @@ export const UploadImg: React.FC<UploadImg> = ({
     try {
       const res = await axios.post("/api/uploads/img", formData, config);
 
+      fetchData();
       onSuccess(res);
     } catch (err) {
       console.log("ERROR", err.response);
@@ -92,7 +93,6 @@ export const UploadImg: React.FC<UploadImg> = ({
   };
 
   const handleChange = (data: any) => {
-    console.log(data);
     if (data.file.response?.status === 201 || data.file.status === "removed") {
       setImgList(data.fileList);
     }
@@ -111,7 +111,6 @@ export const UploadImg: React.FC<UploadImg> = ({
 
   const handeRemove = async (file: any) => {
     const data: any = await deleteFile(file.uid, token);
-    console.log(data);
 
     if (data.status && data.status === 201) {
       message(data.data.message, "success");

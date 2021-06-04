@@ -46,7 +46,7 @@ export const TextEditor: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="editorContainer">
       <Editor
         onChange={() => handleonChange()}
         toolbarClassName="toolbarClass"

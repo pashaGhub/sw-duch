@@ -21,11 +21,46 @@
       }
 
       .news {
-        margin: 1rem 0;
+        margin: 2rem 0 0;
 
         &Title {
           display: flex;
           gap: 1rem;
+        }
+
+        &Container {
+          margin-top: 1rem;
+
+          h3 {
+            @include customTitle;
+          }
+
+          .singlePage {
+            display: flex;
+            justify-content: space-between;
+            background: #f5f8ff;
+            border-radius: 2px;
+            border: 1px solid #f1f1f1;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            font-size: 1.1rem;
+            padding: 0 1rem;
+            margin-bottom: 0.5rem;
+
+            span:first-of-type {
+              font-weight: 500;
+            }
+
+            span:last-of-type {
+              color: $primary-color;
+              margin-right: 1rem;
+              cursor: pointer;
+
+              &:hover {
+                opacity: 0.7;
+              }
+            }
+          }
         }
       }
     }

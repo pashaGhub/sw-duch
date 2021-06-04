@@ -1,5 +1,6 @@
 interface IROUTES {
   home: string;
+  singlepage: string;
   activitiesKids: string;
   activitiesChoirs: string;
   news: string;
@@ -12,6 +13,7 @@ interface IROUTES {
 
 export const ROUTES: IROUTES = {
   home: "/",
+  singlepage: "/singlepage/:id",
   activitiesKids: "/activities/kids",
   activitiesChoirs: "/activities/choirs",
   news: "/news",

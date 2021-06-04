@@ -239,3 +239,22 @@
     padding: 1rem;
   }
 }
+
+@mixin customButton(
+  $mainColor: $light-color,
+  $hoverColor: $light-color,
+  $hoverBgColor: $dark-red-color
+) {
+  margin: 0.5rem 0 0;
+  padding: 0.5rem 1rem;
+  color: $mainColor;
+  border: 1px solid $mainColor;
+  text-decoration: none;
+  transition: 0.5s;
+
+  &:hover {
+    background: $hoverBgColor;
+    border-color: $hoverBgColor;
+    color: $hoverColor;
+  }
+}

@@ -40,7 +40,7 @@ export const usePageSearch = (
       .catch((e) => {
         if (axios.isCancel(e)) return;
         setLoading(false);
-        console.log(e.response);
+
         if (e.response) {
           setError({
             status: e.response.status,
