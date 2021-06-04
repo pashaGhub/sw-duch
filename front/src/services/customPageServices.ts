@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ICustomPage } from "../context/AppContext";
-const backendUrl = "https://sw-duch.netlify.app/";
+const backendUrl = "https://sw-duch.netlify.app";
 
 export const createPage = async (data: any, token: string) => {
   const headers = {
