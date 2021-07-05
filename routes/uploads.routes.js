@@ -38,8 +38,6 @@ const uploadImg = multer({
 
 // /api/uploads/img - upload images
 router.post("/img", auth, uploadImg.single("file"), async (req, res, next) => {
-  console.log("FILE", req);
-
   try {
     const newUpload = new Uploads({
       _id: new Types.ObjectId(),
@@ -49,10 +47,10 @@ router.post("/img", auth, uploadImg.single("file"), async (req, res, next) => {
     await newUpload.save();
     res.status(201).json({ message: "Image successfully uploaded!" });
   } catch (e) {
-    console.log("ERROR", e);
-    res
-      .status(500)
-      .json({ message: "Something went wrong in /uploads/img", error: e });
+    res.status(500).json({
+      message: e ? e.message : "Something went wrong in /uploads/img",
+      error: e,
+    });
   }
 });
 
@@ -63,9 +61,9 @@ router.get("/img", async (req, res) => {
 
     res.json(getImg);
   } catch (e) {
-    res
-      .status(500)
-      .json({ message: "Something went wrong in get uploads/img" });
+    res.status(500).json({
+      message: e ? e.message : "Something went wrong in get uploads/img",
+    });
   }
 });
 
@@ -76,8 +74,9 @@ router.delete("/:id", auth, async (req, res) => {
     fs.unlinkSync(item.path);
     res.status(201).json({ message: "File successfully deleted!" });
   } catch (e) {
-    console.log("MESSAGE:", e.message);
-    res.status(500).json({ message: "Something went wrong in delete file" });
+    res
+      .status(500)
+      .json({ message: e ? e.message : "Something went wrong in delete file" });
   }
 });
 

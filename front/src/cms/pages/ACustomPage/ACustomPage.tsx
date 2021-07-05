@@ -40,12 +40,10 @@ export const ACustomPage: React.FC = () => {
   const [date, setDate] = useState<string>(new Date().toString());
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [chooseImgModalVisible, setChooseImgModalVisible] = useState<boolean>(
-    false
-  );
-  const [choosePageModalVisible, setChoosePageModalVisible] = useState<boolean>(
-    false
-  );
+  const [chooseImgModalVisible, setChooseImgModalVisible] =
+    useState<boolean>(false);
+  const [choosePageModalVisible, setChoosePageModalVisible] =
+    useState<boolean>(false);
 
   const [form] = Form.useForm();
   const history = useHistory();
@@ -111,18 +109,17 @@ export const ACustomPage: React.FC = () => {
           );
         }
 
-        if (data.status === 201 || 200) {
+        if (data.status === 201 || data.status === 200) {
           message(data.data.message, "success");
           clearUpForm();
           form.resetFields();
+        } else if (data.status !== 401 && data.message) {
+          message(data.message, "error");
         }
 
         if (data.status === 401) {
           logout();
           history.push(ROUTES.login);
-          message(data.message, "error");
-        }
-        if (data.status === 500) {
           message(data.message, "error");
         }
       })

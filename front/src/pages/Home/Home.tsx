@@ -34,7 +34,7 @@ export const Home: React.FC = () => {
   const fetchCurrentNews = async () => {
     const data: any = await getCurrentNews();
 
-    if (data.status === 201 || 200) {
+    if (data.status === 201 || data.status === 200) {
       setNews(data.data.pages);
     }
 
@@ -46,7 +46,7 @@ export const Home: React.FC = () => {
   const fetchArticles = async () => {
     const data: any = await getPages("article", 1, "", 5);
 
-    if (data.status === 201 || 200) {
+    if (data.status === 201 || data.status === 200) {
       setArticles(data.data.pages);
     }
 

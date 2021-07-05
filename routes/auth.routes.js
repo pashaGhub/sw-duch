@@ -14,7 +14,7 @@ router.post("/register", async (req, res) => {
     if (candidate) {
       return res
         .status(400)
-        .json({ message: "User already exist. Please login" });
+        .json({ message: e ? e.message : "User already exist. Please login" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -28,7 +28,9 @@ router.post("/register", async (req, res) => {
 
     res.json({ token, userId: user.id });
   } catch (e) {
-    res.status(500).json({ message: "Something went wrong in register" });
+    res
+      .status(500)
+      .json({ message: e ? e.message : "Something went wrong in register" });
   }
 });
 
@@ -39,13 +41,17 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ username });
 
     if (!user) {
-      return res.status(400).json({ message: "Incorrect email or password" });
+      return res
+        .status(400)
+        .json({ message: e ? e.message : "Incorrect email or password" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res.status(400).json({ message: "Incorrect email or password" });
+      return res
+        .status(400)
+        .json({ message: e ? e.message : "Incorrect email or password" });
     }
 
     const token = jwt.sign({ userId: user.id }, config.get("jwtSecret"), {
@@ -54,7 +60,9 @@ router.post("/login", async (req, res) => {
 
     res.json({ token, userId: user.id });
   } catch (e) {
-    res.status(500).json({ message: "Something went wrong in login" });
+    res
+      .status(500)
+      .json({ message: e ? e.message : "Something went wrong in login" });
   }
 });
 

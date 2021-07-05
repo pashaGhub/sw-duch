@@ -13,8 +13,16 @@ router.post("/:id", auth, async (req, res) => {
     await newEvents.save();
     res.status(201).json({ message: "Events updated!" });
   } catch (e) {
-    console.log(e);
-    res.status(500).json({ message: "Something went wrong in events route" });
+    console.log(e.code);
+    if (e.code === 11000) {
+      res.status(409).json({
+        message: "Item already selected",
+      });
+    } else {
+      res.status(500).json({
+        message: e ? e.message : "Something went wrong in events route",
+      });
+    }
   }
 });
 
@@ -27,8 +35,9 @@ router.get("/", async (req, res) => {
 
     res.status(201).json({ pages });
   } catch (error) {
-    console.log(e);
-    res.status(500).json({ message: "Something went wrong in events route" });
+    res.status(500).json({
+      message: e ? e.message : "Something went wrong in events route",
+    });
   }
 });
 
@@ -38,8 +47,9 @@ router.delete("/:id", auth, async (req, res) => {
     await Events.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: "Event successfully deleted!" });
   } catch (e) {
-    console.log(e);
-    res.status(500).json({ message: "Something went wrong in delete events" });
+    res.status(500).json({
+      message: e ? e.message : "Something went wrong in delete events",
+    });
   }
 });
 

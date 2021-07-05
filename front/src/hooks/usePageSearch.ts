@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-const backendUrl = "https://sw-duch.netlify.app";
+let backendUrl = "https://sw-duch.netlify.app";
+if (process.env.REACT_APP_IN_DEVELOPMENT) {
+  backendUrl = "http://localhost:5000";
+}
 
 export const usePageSearch = (
   type: "ad" | "article" | "all" = "all",

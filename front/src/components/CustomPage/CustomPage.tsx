@@ -22,7 +22,7 @@ export const CustomPage: React.FC = () => {
     const id = window.location.pathname.split("/")[2];
     const data: any = await getSinglePage(id);
 
-    if (data.status === 201 || 200) {
+    if (data.status === 201 || data.status === 200) {
       setPage(data.data.page);
     }
 

@@ -1,2 +1,2 @@
-/api* http://34.88.72.177/api/:splat 200
+https://sw-duch.netlify.app/api* http://34.88.72.177/api/:splat 200
 /*    /index.html   200

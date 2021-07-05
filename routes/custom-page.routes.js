@@ -14,7 +14,9 @@ router.post("/", auth, async (req, res) => {
     console.log(e);
     res
       .status(500)
-      .json({ message: "Something went wrong in create custom page" });
+      .json({
+        message: e ? e.message : "Something went wrong in create custom page",
+      });
   }
 });
 
@@ -75,7 +77,9 @@ router.get("/", async (req, res) => {
     res.json(results);
   } catch (e) {
     console.log(e);
-    res.status(500).json({ message: "Something went wrong in register" });
+    res
+      .status(500)
+      .json({ message: e ? e.message : "Something went wrong in register" });
   }
 });
 
@@ -88,7 +92,9 @@ router.post("/:id", auth, async (req, res) => {
     console.log(e);
     res
       .status(500)
-      .json({ message: "Something went wrong in update custom page" });
+      .json({
+        message: e ? e.message : "Something went wrong in update custom page",
+      });
   }
 });
 
@@ -99,9 +105,9 @@ router.get("/:id", async (req, res) => {
     res.status(200).json({ page: findedPage });
   } catch (e) {
     console.log(e);
-    res
-      .status(500)
-      .json({ message: "Something went wrong in get custom page" });
+    res.status(500).json({
+      message: e ? e.message : "Something went wrong in get custom page",
+    });
   }
 });
 
@@ -112,9 +118,9 @@ router.delete("/:id", auth, async (req, res) => {
     res.status(200).json({ message: "Page successfully deleted!" });
   } catch (e) {
     console.log(e);
-    res
-      .status(500)
-      .json({ message: "Something went wrong in delete custom page" });
+    res.status(500).json({
+      message: e ? e.message : "Something went wrong in delete custom page",
+    });
   }
 });
 

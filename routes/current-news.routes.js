@@ -13,10 +13,15 @@ router.post("/:id", auth, async (req, res) => {
     await newCurrent.save();
     res.status(201).json({ message: "Current news updated!" });
   } catch (e) {
-    console.log(e);
-    res
-      .status(500)
-      .json({ message: "Something went wrong in current news route" });
+    if (e.code === 11000) {
+      res.status(409).json({
+        message: "Item already selected",
+      });
+    } else {
+      res.status(500).json({
+        message: e ? e.message : "Something went wrong in current news route",
+      });
+    }
   }
 });
 
@@ -29,10 +34,9 @@ router.get("/", async (req, res) => {
 
     res.status(201).json({ pages });
   } catch (error) {
-    console.log(e);
-    res
-      .status(500)
-      .json({ message: "Something went wrong in current news route" });
+    res.status(500).json({
+      message: e ? e.message : "Something went wrong in current news route",
+    });
   }
 });
 
@@ -42,10 +46,9 @@ router.delete("/:id", auth, async (req, res) => {
     await CurrentNews.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: "Current new successfully deleted!" });
   } catch (e) {
-    console.log(e);
-    res
-      .status(500)
-      .json({ message: "Something went wrong in delete current news" });
+    res.status(500).json({
+      message: e ? e.message : "Something went wrong in delete current news",
+    });
   }
 });
 

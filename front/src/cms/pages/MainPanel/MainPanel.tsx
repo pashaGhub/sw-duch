@@ -37,24 +37,20 @@ export const MainPanel: React.FC = () => {
   const fetchCurrentNews = async () => {
     const data: any = await getCurrentNews();
 
-    if (data.status === 201 || 200) {
+    if (data.status === 201 || data.status === 200) {
       setNews(data.data.pages);
-    }
-
-    if (data.status === 500) {
-      message(data.data.message, "error");
+    } else if (data.message) {
+      message(data.message, "error");
     }
   };
 
   const fetchEvents = async () => {
     const data: any = await getEvents();
 
-    if (data.status === 201 || 200) {
+    if (data.status === 201 || data.status === 200) {
       setEvents(data.data.pages);
-    }
-
-    if (data.status === 500) {
-      message(data.data.message, "error");
+    } else if (data.message) {
+      message(data.message, "error");
     }
   };
 
@@ -75,9 +71,6 @@ export const MainPanel: React.FC = () => {
 
   const handleChoosePage = async (page: ICustomPage) => {
     let data: any;
-    if (target === "news") {
-      data = await newCurrentNews(page._id, token);
-    }
 
     switch (target) {
       case "news":
@@ -90,7 +83,9 @@ export const MainPanel: React.FC = () => {
         break;
     }
 
-    if (data.status === 201 || 200) {
+    if (data.status === 201 || data.status === 200) {
+      console.log("MY DATA:", data);
+
       message(data.data.message, "success");
       switch (target) {
         case "news":
@@ -102,15 +97,14 @@ export const MainPanel: React.FC = () => {
         default:
           break;
       }
+    } else if (data.status !== 401 && data.message) {
+      message(data.message, "error");
     }
 
     if (data.status === 401) {
       logout();
       history.push(ROUTES.login);
-      message(data.data.message, "error");
-    }
-    if (data.status === 500) {
-      message(data.data.message, "error");
+      message(data.message, "error");
     }
   };
 
@@ -136,8 +130,10 @@ export const MainPanel: React.FC = () => {
         break;
     }
 
-    if (data.status === 201 || 200) {
-      message(data.data.message, "success");
+    console.log(data);
+
+    if (data.status === 201 || data.status === 200) {
+      message(data.message, "success");
       switch (deleteTarget) {
         case "news":
           fetchCurrentNews();
@@ -149,15 +145,15 @@ export const MainPanel: React.FC = () => {
           break;
       }
       fetchCurrentNews();
+    } else if (data.status !== 401 && data.message) {
+      message(data.message, "error");
     }
 
     if (data.status === 401) {
       logout();
       history.push(ROUTES.login);
-      message(data.data.message, "error");
-    }
-    if (data.status === 500) {
-      message(data.data.message, "error");
+
+      message(data.message, "error");
     }
   };
 

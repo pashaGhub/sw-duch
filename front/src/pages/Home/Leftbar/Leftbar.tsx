@@ -10,7 +10,7 @@ export const Leftbar: React.FC = () => {
   const fetchEvents = async () => {
     const data: any = await getEvents();
 
-    if (data.status === 201 || 200) {
+    if (data.status === 201 || data.status === 200) {
       setEvents(data.data.pages);
     }
 
