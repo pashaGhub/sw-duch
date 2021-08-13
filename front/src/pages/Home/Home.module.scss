@@ -136,8 +136,10 @@
           transform: scale(0);
           transition: 0.5s;
         }
+      }
 
-        &:hover {
+      &:hover {
+        .fbIcon {
           color: #fff;
 
           &::before {
