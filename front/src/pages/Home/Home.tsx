@@ -144,12 +144,16 @@ export const Home: React.FC = () => {
               </a>
             </div>
           </div>
-          <div className={s.socialmedia}>
-            <a href="https://www.facebook.com/parafiadswilno" target="_blank">
+          <a
+            href="https://www.facebook.com/parafiadswilno"
+            target="_blank"
+            className={s.socialmedia}
+          >
+            <div className={s.fbIcon}>
               <FontAwesomeIcon icon={faFacebookF} />
-            </a>
+            </div>
             <span>Znajdź nas na facebook'u!</span>
-          </div>
+          </a>
           <div className={s.worship}>
             <img src={worshipImg} alt="" />
             <div className={s.worshipText}>

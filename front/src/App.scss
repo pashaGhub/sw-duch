@@ -12,4 +12,9 @@
     padding-top: $header-height + $main-top-margin;
     padding-bottom: $footer-min-height + 10rem;
   }
+
+  //spin color
+  .ant-spin-show-text {
+    color: $header-color;
+  }
 }

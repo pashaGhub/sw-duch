@@ -107,14 +107,14 @@
       @include boxBorder;
       margin-top: 2rem;
 
-      a {
+      .fbIcon {
         position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 50%;
         text-decoration: none;
-        width: 4.5rem;
+        min-width: 4.5rem;
         height: 4.5rem;
         font-size: 2.5rem;
         color: #3b5999;
@@ -147,10 +147,15 @@
       }
 
       span {
-        font-size: 1.8rem;
-        font-weight: 200;
+        font-size: 1.2rem;
         margin: auto;
         color: #3b5999;
+        text-align: center;
+
+        @include minResponsive(460px) {
+          font-size: 1.8rem;
+          font-weight: 200;
+        }
 
         @include minResponsive(600px) {
           font-size: 2.5rem;
@@ -235,6 +240,10 @@
           color: $light-color;
           font-weight: 200;
           text-transform: unset;
+
+          @include maxResponsive(460px) {
+            font-size: 2.2rem;
+          }
         }
       }
     }
